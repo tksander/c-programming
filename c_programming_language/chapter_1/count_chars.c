@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define MAX 10000
+
 /* count chars in input ; 1st version */
 
 int main()

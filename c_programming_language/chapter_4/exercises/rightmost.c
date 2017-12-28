@@ -40,7 +40,8 @@ int gline(char s[], int lim)
  */
 int strindex(char line[], char pattern[])
 {
-    int sInc, j, k;
+    int sInc, j, k, rightMostIndex;
+    rightMostIndex = -1;
 
     // iterate until end of line
     for (sInc = 0; line[sInc] != '\0'; sInc++) {
@@ -50,10 +51,11 @@ int strindex(char line[], char pattern[])
         for (j = sInc, k = 0; pattern[k] != '\0' && line[j] == pattern[k]; j++, k++)
             ;
         // if we've found at least one match to Pattern AND we interated through the entire pattern
-        if (k > 0 && pattern[k] == '\0')
+        if (k > 0 && pattern[k] == '\0') {
             // return the starting index of the Pattern within Line
-            return sInc;
+            rightMostIndex = sInc;
+        }
     }
-    return -1;
+    return (rightMostIndex == -1) ? -1 : rightMostIndex;
 }
 
